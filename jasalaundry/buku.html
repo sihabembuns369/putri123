@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <title>Upcube - Responsive Flat Admin Dashboard</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+	<link href="assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- DataTables -->
+    <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- Responsive datatable examples -->
+    <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+
+<body>
+
+	<script src="header.js"></script>
+
+    <div class="wrapper">
+        <div class="container-fluid">
+
+            <!-- Page-Title -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="page-title-box">
+                  <h4 class="page-title">Datatable</h4>
+                </div>
+              </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+			
+			<div class="row">
+                    <div class="col-12">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+
+                                <h4 class="mt-0 header-title">
+                                 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="tampil()">Tambah Data</button>
+                                </h4>
+
+                                <table id="dttable" class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Kode Buku</th>
+                                        <th>Judul Buku</th>
+                                        <th>Pengarang</th>
+                                        <th>Penerbit</th>
+                                        <th>ISBN</th>
+                                        <th>Tahun Tebit</th>
+                                        <th>Rak</th>
+                                        <th>operasi</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+            </div> <!-- end row -->
+			
+                <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0" id="myLargeModalLabel">Tambah Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Kode Buku</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="" id="txt_kode" />
+                                    </div>
+								</div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Judul</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="" id="txt_judul" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Pengarang</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2" id="txt_pengarang" style="width: 10cm">
+                                            <option value="">Select</option>>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Penerbit</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2" id="txt_penerbit" style="width: 10cm">
+                                            <option value="">Select</option>>
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">ISBN</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="" id="txt_isbn" />
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Tahun Terbit</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="" id="txt_tahun" />
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Rak</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="" id="txt_rak" />
+                                    </div>
+                                </div>
+                                <div class="form-row" id="blocktombol"></div>
+
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+        </div>
+
+    </div> <!-- end container -->
+    </div>
+    <!-- end wrapper -->
+
+	<script src="footer.js"></script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.min.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+	<script src="alamat.js"></script>
+	
+	<!-- Required datatable js -->
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+		
+	<!-- Responsive examples -->
+    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+	
+	<script src="assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+        <script src="assets/pages/sweet-alert.init.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.js"></script>
+	
+	<script>
+		ceklogin();
+		var tbldata = $("#dttable").DataTable({
+			"ajax": "http://localhost/piul/api_ci/Api/bukuJSON"
+		});
+
+        $(document).ready(function(){
+            // document.ready = ketika refresh maka tetap dijalankan
+            $('.select2').select2();
+
+            $.getJSON(getpengarang, function(result){
+                $.each(result, function(i,kolom){
+                    // append = menambahkan nilai tag html sesuai id
+                $("#txt_pengarang").append('\
+                    <option value="'+ kolom.ID_Pengarang+'">'+ kolom.Nama_Pengarang+'</option>\
+                    ');
+                });
+            });
+			
+			$.getJSON("http://localhost/piul/api_ci/Api/penerbitJSON", function(result){
+                $.each(result, function(i,kolom){
+                $("#txt_penerbit").append('\
+                    <option value="'+ kolom.ID_Penerbit+'">'+ kolom.Nama_Penerbit+'</option>\
+                    ');
+                });
+            });
+        });    
+		
+		function tambah(){
+			var kode = $('#txt_kode').val();
+			var judul = $('#txt_judul').val();
+			var pengarang = $('#txt_pengarang').val();
+			var penerbit = $('#txt_penerbit').val();
+			var isbn = $('#txt_isbn').val();
+			var tahun = $('#txt_tahun').val();
+			var rak = $('#txt_rak').val();
+			// logika operator kalau simbol && sama dengan end kalau simbol || sama dengan or
+			if(kode == '' || judul == '' || pengarang == '' || penerbit == '' || isbn == '' || tahun == '' || rak == ''){
+				swal({title: 'Gagal', text: 'Ada Isian yang Belum Anda Isi', type: 'error'});
+				return;
+			}
+			var kk = "http://localhost/piul/api_ci/Api/tambahbuku";
+			
+			$.ajax({
+				url: kk,
+				method: "POST",
+				data: {kd : kode,
+					jd : judul,
+					png : pengarang,
+					pnr : penerbit,
+					isbn : isbn,
+					th : tahun,
+					rak : rak},
+				cache: "false",
+				success: function(x){
+					if(x == 1){
+						swal({title: 'Berhasil', text: 'Data Buku Berhasil di Tambahkan', type: 'success'});
+						tbldata.ajax.reload(null, false);
+					}else{
+						swal({title: 'Gagal', text: 'Data Buku Gagal di Tambahkan', type: 'error'});
+					}
+				}
+			})
+		}
+        function hapus(a){
+            swal({
+                title:'Hapus',
+                text: "Apakah Anda Ingin Menghapus?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it',
+            }).then(function(x){
+                $.ajax({
+                    url:hapusbuku,
+                    method:"POST",
+                    data:{kode:a},
+                    cache:"false",
+                    success:function(x){
+                        if(x == 1){
+                            swal({title:'Berhasil', text: 'Data Buku Berhasil di Hapus',type: 'success'});
+                            // refresh();
+                            tbldata.ajax.reload(null,false);
+                            // live record ditable dengan memanggil variable tbldata
+                        }else{
+                            swal({title: 'Gagal', text: 'Ada Masalah dengan Proses Penghapusan !',type:'error'});
+                        }
+                    }
+                })
+
+            })
+        }
+    function refresh(){
+            $("#txt_kode").val("");
+            // .val("") khusus untuk tag html input sesuai id yang dipilih digunakan untuk menghapus nilai 
+            // .val() khusus untuk tag html input sesuai id yang dipilih digunakan untuk mengambil nilai
+            $("#txt_judul").val("");
+            $("#txt_pengarang").val("").change();
+            $("#txt_penerbit").val("").change();
+            $("#txt_isbn").val("");
+            $("#txt_tahun").val("");
+            $("#txt_rak").val("");
+            $("#myLargeModalLabel").html('Tambah Data');
+            $("#txt_kode").attr("readonly", false);
+            // attr() menambahkan atribut baru di tag html
+            $("#blocktombol").html('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp<button type="button" class="btn btn-primary" onclick="tambah()">Save</button>');
+            // onclick = memanggil fungsi dijavascript. contoh : onclick="namafungsi()"
+        }
+        function edit(el){
+            // parameter (el) terbilang 'this' maka yang ditampilkan adalah keseluruhan tag html 
+            var kode = $(el).data("kode");
+            // $(el).data("kode") = mengambil nilai yang ada diatribut tag html sesuai data-kode="nilainya"
+            console.log (el)
+            $("#txt_kode").val(kode);
+            $.ajax({
+                url: "http://localhost/piul/api_ci/Api/filterbuku",
+                method: "POST",
+                data: {kd: kode},
+                // data = mengirimkan nilai ke Api dengan membawa 'kd'
+                cache: "false",
+                success: function(x){
+                    // x : nilai yang dikembalikan oleh Api berbentuk seperti ini "1|Pemrograman Visual Basic 6.0|201|101|979-731-828-1|2005|H66" atau "0|"
+                    console.log(x);
+                    var xx = x.split("|");
+                    // split : merubah nilai menjadi array sesuai karakter yang dimasukkan contoh garis lurus '|'
+                    console.log (xx)
+                    if(xx[0] == 1){
+                        $("#txt_judul").val(xx[1]);
+                        $("#txt_pengarang").val(xx[2]).change();
+                        $("#txt_penerbit").val(xx[3]).change();
+                        $("#txt_isbn").val(xx[4]);
+                        $("#txt_tahun").val(xx[5]);
+                        $("#txt_rak").val(xx[6]);
+                    }else{
+                        swal({title: 'Gagal', text: 'Data Yang Anda pilih tidak Tersedia !', type: 'error'});
+                        refresh();
+                        tbldata.ajax.reload(null, false);
+                        return;
+                    }
+                }
+            })
+            $("#myLargeModalLabel").html('Edit Data');
+            $("#txt_kode").attr("readonly", true);
+            $("#blocktombol").html('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp<button type="button" class="btn btn-primary" onclick="update()">Update</button>');
+        }
+        function update(){
+            var kode = $('#txt_kode').val();
+			var judul = $("#txt_judul").val();
+			var pengarang = $('#txt_pengarang').val();
+			var penerbit = $('#txt_penerbit').val();
+			var isbn = $('#txt_isbn').val();
+			var tahun = $('#txt_tahun').val();
+            var rak = $('#txt_rak').val();
+            
+            if(kode == '' || judul == '' || pengarang == '' || penerbit == '' || isbn == '' || tahun == '' || rak == ''){
+				swal({title: 'Gagal', text: 'Ada Isian yang Belum Anda Isi', type: 'error'});
+				return;
+			}
+			
+			$.ajax({
+                url: updatedata,
+                // memanggil nama variabel yang ada di alamat.js 
+				method: "POST",
+				data: {kd : kode,
+					jd : judul,
+					png : pengarang,
+					pnr : penerbit,
+					isbn : isbn,
+					th : tahun,
+					rak : rak},
+				cache: "false",
+				success: function(x){
+                    // x = nilai yang kembalikan oleh Api yang bernilai 1 atau 0
+					if(x == 1){
+                        // memberi logika apakah yang dikirim bernilai 1
+                        swal({title: 'Berhasil', text: 'Data Buku Berhasil di Update', type: 'success'});
+                        refresh();
+                        $("#modalku").modal('toggle');
+						tbldata.ajax.reload(null, false);
+					}else{
+						swal({title: 'Gagal', text: 'Ada Beberapa Masalah dengan Data yang Anda Isikan ! ', type: 'error'});
+					}
+				}
+			})
+        }
+        function tampil(){
+            // memanggil function refresh
+            refresh()
+        }
+            
+	</script>
+
+</body>
+
+</html>
